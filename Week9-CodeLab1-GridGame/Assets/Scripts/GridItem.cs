@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class GridItem : MonoBehaviour
 {
-    public Material[] materials;
-    public int gridX, gridY;
+    public Material[] materials;  //materials to be applied on the cube
+    public int gridX, gridY;      //makes variable for x & y public within editor to determine grid size
 
     void Start()
     {
-        GetComponent<MeshRenderer>().material = 
-            materials[Random.Range(0, materials.Length)];
+        GetComponent<MeshRenderer>().material =            //gets the applied material on the mesh
+            materials[Random.Range(0, materials.Length)];  //randomly assigns a material within the material array
     }
 
     // Start is called before the first frame update
     public void SetPos(int x, int y)
     {
-        gridX = x;
-        gridY = y;
+        gridX = x;         //sets the length of x on the grid
+        gridY = y;         //sets the length of y on the grid
 
         name = "X: " + x + " Y: " + y;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GridItem : MonoBehaviour
 {
-    public Material[] materials;  //materials to be applied on the cube
+    public Material[] materials;  //materials array to be applied on the cube
     public int gridX, gridY;      //makes variable for x & y public within editor to determine grid size
 
     void Start()

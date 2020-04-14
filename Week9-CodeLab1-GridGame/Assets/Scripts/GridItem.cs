@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridItem : MonoBehaviour
 {
     public Material[] materials;  //materials array to be applied on the cube
-    public int gridX, gridY;      //makes variable for x & y public within editor to determine grid size
+    public int gridX, gridY;      //initializes where 3d mesh of cube is on the grid
 
     void Start()
     {
@@ -16,8 +16,8 @@ public class GridItem : MonoBehaviour
     // Start is called before the first frame update
     public void SetPos(int x, int y)
     {
-        gridX = x;         //sets the length of x on the grid
-        gridY = y;         //sets the length of y on the grid
+        gridX = x;         //sets the position of x on the grid
+        gridY = y;         //sets the position of y on the grid
 
         name = "X: " + x + " Y: " + y;//it prints the co-ordinates of the originally selected square.
     }

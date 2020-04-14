@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
-    public int width;
-    public int height;
+    public int width; //initializing width
+    public int height; //initializing height
 
-    public GameObject cube;
+    public GameObject cube; //initializing the cube as a game object
 
-    GameObject[,] grid;
+    GameObject[,] grid; //this is a 2d array for the grid
 
-    public static GridManager instance;
+    public static GridManager instance; //this allows the gridmanager to be accessed from other scripts
 
-    public GridItem selected;
+    public GridItem selected; //this is initializing which cube we are selecting so we can swap
 
-    void Awake()
+    void Awake() //this is the singleton for the game object this script is attached to
     {
-        if(instance == null){
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+        if(instance == null){ //if theres no instance of this script
+            instance = this; //now there is
+            DontDestroyOnLoad(gameObject); //please dont destroy my game object
         } else {
-            Destroy(gameObject);
+            Destroy(gameObject); //otherwise if there is a duplicate, it is a fake, please destroy it on sight seargent
         }
     }
 

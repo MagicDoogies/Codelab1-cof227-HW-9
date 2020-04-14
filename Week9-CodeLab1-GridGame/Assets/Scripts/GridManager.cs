@@ -28,42 +28,41 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grid = new GameObject[width, height];
+        grid = new GameObject[width, height]; // creates a new grid as a GameObject 
 
-        GameObject gridHolder = new GameObject("Grid Holder");
+        GameObject gridHolder = new GameObject("Grid Holder"); // lets you set what prefab is holding the grid
 
         for (int x = 0; x < width; x++){
-            for (int y = 0; y < height; y++)
+            for (int y = 0; y < height; y++) // nested for loops that iterate through each grid position
             {
-                grid[x, y] = Instantiate<GameObject>(cube);
-                grid[x, y].transform.position = 
-                    new Vector3(x, y, 0);
+                grid[x, y] = Instantiate<GameObject>(cube); // instantiate a cube at each iteration
+                grid[x, y].transform.position = new Vector3(x, y, 0); // sets where the cube is instantiated
 
-                grid[x, y].transform.parent = gridHolder.transform;
-                grid[x, y].GetComponent<GridItem>().SetPos(x, y);
+                grid[x, y].transform.parent = gridHolder.transform; // setting the transform to the gridHolder's transform
+                grid[x, y].GetComponent<GridItem>().SetPos(x, y); // putting it there in that position
             }
         }
 
-        Camera.main.transform.position = 
-            new Vector3(width / 2, height / 2, -10);
+        Camera.main.transform.position = new Vector3(width / 2, height / 2, -10); // placing the camera in the center and above.
     }
 
-    public void Swap(GridItem newItem)
+    public void Swap(GridItem newItem) // this is the swapping function. it gets called in GridItem.cs
     {
-        int tempX = newItem.gridX;
-        int tempY = newItem.gridY;
+        int tempX = newItem.gridX; // the temp variable gets replaced by the new one.
+        int tempY = newItem.gridY; // the temp variable gets replaced by the new one.
 
-        newItem.SetPos(selected.gridX, selected.gridY);
-        newItem.transform.position =
-                    new Vector2(selected.gridX, selected.gridY);
-        grid[tempX, tempY] = newItem.gameObject;
+        // THIS MOVES THE FIRST CUBE'S POSITION TO THE SECOND CUBE'S POSITION
+        newItem.SetPos(selected.gridX, selected.gridY); // set the position to the position of the selected cube
+        newItem.transform.position = new Vector2(selected.gridX, selected.gridY); // set position on the XY position of selected cube
+        grid[tempX, tempY] = newItem.gameObject; // setting temp and newItem to be equal to each other
 
-        selected.SetPos(tempX, tempY);
-        selected.transform.position =
-                    new Vector2(tempX, tempY);
-        grid[tempX, tempY] = selected.gameObject;
+        // THIS MOVES THE SECOND CUBE TO THE FIRST CUBE'S POSITION
+        selected.SetPos(tempX, tempY); // set the position of the selected cube to the position of the temp cube.
+        selected.transform.position = new Vector2(tempX, tempY); // set position on the XY position of the temp cube. 
+        grid[tempX, tempY] = selected.gameObject; // setting temp and selected to be equal to each other
 
-        selected.transform.localScale = new Vector3(.75f, .75f, .75f);
-        selected = null;
+        // These are to reset the selection states after the swap is over.
+        selected.transform.localScale = new Vector3(.75f, .75f, .75f); // resets the size of the cube back to smaller again.
+        selected = null; // resets the selection back to null after the swap is over.
     }
 }

@@ -9,8 +9,8 @@ public class GridItem : MonoBehaviour
 
     void Start()
     {
-        GetComponent<MeshRenderer>().material =            //gets the applied material on the mesh
-            materials[Random.Range(0, materials.Length)];  //randomly assigns a material within the material array
+       GetComponent<MeshRenderer>().material =            //gets the applied material on the mesh
+           materials[Random.Range(0, materials.Length)];  //randomly assigns a material within the material array
     }
 
     // Start is called before the first frame update

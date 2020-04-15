@@ -59,7 +59,7 @@ public class GridManager : MonoBehaviour
                 grid2[x, y].transform.position = new Vector3(x, y + 5, 0); // sets where the cube is instantiated
 
                 grid2[x, y].transform.parent = gridHolder2.transform; // setting the transform to the gridHolder's transform
-                grid2[x, y].GetComponent<GridItem>().SetPos(x, y + 5); // putting it there in that position
+                grid2[x, y].GetComponent<ImageItem>().SetPos(x, y + 5); // putting it there in that position
             }
         }
 

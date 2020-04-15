@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1027502661779645183}
   - component: {fileID: 5673892753907231402}
   - component: {fileID: 8643296525352308606}
-  - component: {fileID: 2762400432864355315}
+  - component: {fileID: 4451193635148352169}
   m_Layer: 0
   m_Name: imagecube
   m_TagString: Untagged
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 12c4fd0bdc2f6994d9cdc52cc1df0d2f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2762400432864355315
+--- !u!114 &4451193635148352169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,11 +103,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5668347532804257379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c53569adbfad44789afc31e70aed8495, type: 3}
+  m_Script: {fileID: 11500000, guid: 29a4c02d26884ad4c87ed7f8668a3494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 90e1ff4d5f3094aea99d19c8b001d79a, type: 2}
+  - {fileID: 2100000, guid: 21fe5d408e39246e689be8050d6aa568, type: 2}
   - {fileID: 2100000, guid: 21fe5d408e39246e689be8050d6aa568, type: 2}
   - {fileID: 2100000, guid: af3f668dc95f3410f9fdf395bfd98c24, type: 2}
   - {fileID: 2100000, guid: 2a312b90262b947af80b276fcc2d1d2c, type: 2}

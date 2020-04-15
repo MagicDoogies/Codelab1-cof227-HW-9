@@ -9,7 +9,11 @@ public class GridManager : MonoBehaviour
 
     public GameObject cube; //initializing the cube as a game object
 
+    public GameObject imagecube; //initializes the cubes we are using for user to copy
+
     GameObject[,] grid; //this is a 2d array for the grid
+
+    GameObject[,] grid2; //this is the 2d array for the grid that should be matched
 
     public static GridManager instance; //this allows the gridmanager to be accessed from other scripts
 
@@ -43,7 +47,23 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        Camera.main.transform.position = new Vector3(width / 2, height / 2, -10); // placing the camera in the center and above.
+        grid2 = new GameObject[width, height]; // creates a new grid as a GameObject 
+
+        GameObject gridHolder2 = new GameObject("Grid Holder"); // lets you set what prefab is holding the grid
+
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++) // nested for loops that iterate through each grid position
+            {
+                grid2[x, y] = Instantiate<GameObject>(imagecube); // instantiate a cube at each iteration
+                grid2[x, y].transform.position = new Vector3(x, y + 5, 0); // sets where the cube is instantiated
+
+                grid2[x, y].transform.parent = gridHolder2.transform; // setting the transform to the gridHolder's transform
+                grid2[x, y].GetComponent<GridItem>().SetPos(x, y + 5); // putting it there in that position
+            }
+        }
+
+        Camera.main.transform.position = new Vector3(width / 2, height, -10); // placing the camera in the center and above.
     }
 
     public void Swap(GridItem newItem) // this is the swapping function. it gets called in GridItem.cs

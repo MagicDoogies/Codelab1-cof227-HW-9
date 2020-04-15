@@ -49,7 +49,7 @@ public class GridManager : MonoBehaviour
 
         grid2 = new GameObject[width, height]; // creates a new grid as a GameObject 
 
-        GameObject gridHolder2 = new GameObject("Grid Holder"); // lets you set what prefab is holding the grid
+        GameObject gridHolder2 = new GameObject("Grid Holder2"); // lets you set what prefab is holding the grid
 
         for (int x = 0; x < width; x++)
         {

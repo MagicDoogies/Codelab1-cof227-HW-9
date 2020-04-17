@@ -7,9 +7,13 @@ public class ImageItem : MonoBehaviour
     public Material[] materials;  //materials array to be applied on the cube
     public int gridX, gridY;      //initializes where 3d mesh of cube is on the grid
 
+    public int color;   // 
+
     void Start()
     {
-        GetComponent<MeshRenderer>().material = materials[gridX];  //randomly assigns a material within the material array
+        color = gridX; 
+        GetComponent<MeshRenderer>().material = materials[color];  //randomly assigns a material within the material array
+        
     }
 
     // Start is called before the first frame update

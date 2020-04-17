@@ -113,3 +113,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2a312b90262b947af80b276fcc2d1d2c, type: 2}
   gridX: 0
   gridY: 0
+  color: 0

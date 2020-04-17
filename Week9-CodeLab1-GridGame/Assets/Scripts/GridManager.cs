@@ -11,9 +11,9 @@ public class GridManager : MonoBehaviour
 
     public GameObject imagecube; //initializes the cubes we are using for user to copy
 
-    GameObject[,] grid; //this is a 2d array for the grid
+    GridItem[,] grid; //this is a 2d array for the grid
 
-    GameObject[,] grid2; //this is the 2d array for the grid that should be matched
+    ImageItem[,] grid2; //this is the 2d array for the grid that should be matched
 
     public static GridManager instance; //this allows the gridmanager to be accessed from other scripts
 
@@ -38,14 +38,14 @@ public class GridManager : MonoBehaviour
 
         CorrectCubes = 0; // start off with CorrectCubes being 0
         
-        grid = new GameObject[width, height]; // creates a new grid as a GameObject 
+        grid = new GridItem[width, height]; // creates a new grid as a GameObject 
 
         GameObject gridHolder = new GameObject("Grid Holder"); // lets you set what prefab is holding the grid
 
         for (int x = 0; x < width; x++){
             for (int y = 0; y < height; y++) // nested for loops that iterate through each grid position
             {
-                grid[x, y] = Instantiate<GameObject>(cube); // instantiate a cube at each iteration
+                grid[x, y] = Instantiate<GameObject>(cube).GetComponent<GridItem>(); // instantiate a cube at each iteration
                 grid[x, y].transform.position = new Vector3(x, y, 0); // sets where the cube is instantiated
 
                 grid[x, y].transform.parent = gridHolder.transform; // setting the transform to the gridHolder's transform
@@ -53,7 +53,7 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        grid2 = new GameObject[width, height]; // creates a new grid as a GameObject 
+        grid2 = new ImageItem[width, height]; // creates a new grid as a GameObject 
 
         GameObject gridHolder2 = new GameObject("Grid Holder2"); // lets you set what prefab is holding the grid
 
@@ -61,7 +61,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++) // nested for loops that iterate through each grid position
             {
-                grid2[x, y] = Instantiate<GameObject>(imagecube); // instantiate a cube at each iteration
+                grid2[x, y] = Instantiate<GameObject>(imagecube).GetComponent<ImageItem>(); // instantiate a cube at each iteration
                 grid2[x, y].transform.position = new Vector3(x, y + 5, 0); // sets where the cube is instantiated
 
                 grid2[x, y].transform.parent = gridHolder2.transform; // setting the transform to the gridHolder's transform
@@ -80,12 +80,12 @@ public class GridManager : MonoBehaviour
         // THIS MOVES THE FIRST CUBE'S POSITION TO THE SECOND CUBE'S POSITION
         newItem.SetPos(selected.gridX, selected.gridY); // set the position to the position of the selected cube
         newItem.transform.position = new Vector2(selected.gridX, selected.gridY); // set position on the XY position of selected cube
-        grid[tempX, tempY] = newItem.gameObject; // setting temp and newItem to be equal to each other
+        grid[selected.gridX, selected.gridY] = newItem;
 
         // THIS MOVES THE SECOND CUBE TO THE FIRST CUBE'S POSITION
         selected.SetPos(tempX, tempY); // set the position of the selected cube to the position of the temp cube.
         selected.transform.position = new Vector2(tempX, tempY); // set position on the XY position of the temp cube. 
-        grid[tempX, tempY] = selected.gameObject; // setting temp and selected to be equal to each other
+        grid[tempX, tempY] = selected; // setting temp and selected to be equal to each other
 
         // These are to reset the selection states after the swap is over.
         selected.transform.localScale = new Vector3(.75f, .75f, .75f); // resets the size of the cube back to smaller again.
@@ -101,25 +101,30 @@ public class GridManager : MonoBehaviour
             for (int y = 0; y < height; y++)
             {
 
-
-                // NOTE at 4:42pm 4/15/2020 - The for loop above seems to be working, but this if statement below 
-                //needs fixing!
-                if (grid[x, y].GetComponent<MeshRenderer>().material == grid2[x, y].GetComponent<MeshRenderer>().material)
+                // compare the 2 grids to each other. if they're equal, increment the CorrectCubes variable
+                if (grid[x, y].color == grid2[x, y].color)
                 {
+                    Debug.Log("Found: " + x + ", " + y + " grid1 - " + grid[x, y].color + " grid 2 - " + grid2[x, y].color);
                     CorrectCubes += 1;
-                    Debug.Log("CorrectCubes: " + CorrectCubes);
-
-                    if (CorrectCubes == 2)
-                    {
-                        print("YOU ARE SMART. WIN");
-                    }
                 }
-
+                else
+                {
+                    Debug.Log("NOT found: " + x + ", " + y + " grid1 - " + grid[x, y].color + " grid 2 - " + grid2[x, y].color);
+                }
             }
+        }
+        
+
+        Debug.Log("CorrectCubes: " + CorrectCubes);
+        
+
+        // if all 16 cubes are correct
+        if (CorrectCubes == 16)
+        {
+            print("YOU ARE SMART. WIN");
         }
 
 
-        
 
 
 

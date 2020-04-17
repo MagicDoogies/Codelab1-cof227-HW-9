@@ -7,9 +7,13 @@ public class GridItem : MonoBehaviour
     public Material[] materials;  //materials array to be applied on the cube
     public int gridX, gridY;      //initializes where 3d mesh of cube is on the grid
 
+    public int color;   // 
+
     void Start()
     {
-        GetComponent<MeshRenderer>().material = materials[ 3 - gridX]; //Chooses which material to grab based don the position of the X-axis.
+        color = 3 - gridX; 
+        GetComponent<MeshRenderer>().material = materials[color]; //Chooses which material to grab based don the position of the X-axis.
+        
     }
 
     // Start is called before the first frame update
@@ -30,6 +34,6 @@ public class GridItem : MonoBehaviour
             GridManager.instance.Swap(this);//activates the function in the GridManager script that swaps the positions of the selected cubes.
         }
 
-        print(name); //prints out the co-ordinates of whatever is in line 22.
+        //print(name); //prints out the co-ordinates of whatever is in line 22.
     }
 }

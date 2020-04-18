@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GridManager : MonoBehaviour
 {
     public int width; //initializing width
     public int height; //initializing height
+
+    
+    public float timer = 30;  //start timer at 30 seconds
+    public Text infoTime;
 
     public GameObject cube; //initializing the cube as a game object
 
@@ -128,5 +133,11 @@ public class GridManager : MonoBehaviour
 
 
 
+    }
+
+    void Update()
+    {
+        timer -= Time.deltaTime;
+        infoTime.text = "Time: " + (int)timer;
     }
 }

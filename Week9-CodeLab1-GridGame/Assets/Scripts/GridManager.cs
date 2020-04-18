@@ -11,6 +11,8 @@ public class GridManager : MonoBehaviour
     public float timer = 30;  //start timer at 30 seconds
     public Text infoTime;
 
+    public Text youwin;
+
     public GameObject cube; //initializing the cube as a game object
 
     public GameObject imagecube; //initializes the cubes we are using for user to copy
@@ -24,11 +26,6 @@ public class GridManager : MonoBehaviour
     public GridItem selected; //this is initializing which cube we are selecting so we can swap
 
     public static int CorrectCubes; //this is how many cubes are correct. when it reaches 16 we're good
-
-    public bool win;
-
-    public GameObject winboard;
-
 
     void Awake() //this is the singleton for the game object this script is attached to
     {
@@ -129,20 +126,32 @@ public class GridManager : MonoBehaviour
         if (CorrectCubes == 16)
         {
             print("YOU ARE SMART. WIN");
-            win = true;
-            Instantiate<GameObject>(winboard);
-            winboard.transform.position = new Vector3(width / 2, height / 2, 0);
+            youwin.GetComponent<Text>().enabled = true;
         }
     }
 
     void Update()
     {
-        timer -= Time.deltaTime;
-        infoTime.text = "Time: " + (int)timer;
-
-        if(timer <= 0 )
-        { 
-            timer = 0;
+        if(CorrectCubes == 16)
+        {
+            timer = timer;
         }
+        else
+        {
+            timer -= Time.deltaTime;
+            infoTime.text = "Time: " + (int)timer;
+
+            if (timer <= 0)
+            {
+                timer = 0;
+            }
+        }
+        
+        
+
+        
+        
+        
+        
     }
 }

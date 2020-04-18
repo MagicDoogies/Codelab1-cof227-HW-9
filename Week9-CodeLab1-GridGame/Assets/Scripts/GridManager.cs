@@ -25,6 +25,10 @@ public class GridManager : MonoBehaviour
 
     public static int CorrectCubes; //this is how many cubes are correct. when it reaches 16 we're good
 
+    public bool win;
+
+    public GameObject winboard;
+
 
     void Awake() //this is the singleton for the game object this script is attached to
     {
@@ -39,7 +43,6 @@ public class GridManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         CorrectCubes = 0; // start off with CorrectCubes being 0
         
         grid = new GridItem[width, height]; // creates a new grid as a GameObject 
@@ -108,13 +111,13 @@ public class GridManager : MonoBehaviour
                 // compare the 2 grids to each other. if they're equal, increment the CorrectCubes variable
                 if (grid[x, y].color == grid2[x, y].color)
                 {
-                    Debug.Log("Found: " + x + ", " + y + " grid1 - " + grid[x, y].color + " grid 2 - " + grid2[x, y].color);
+                    //Debug.Log("Found: " + x + ", " + y + " grid1 - " + grid[x, y].color + " grid 2 - " + grid2[x, y].color);
                     CorrectCubes += 1;
                 }
-                else
-                {
-                    Debug.Log("NOT found: " + x + ", " + y + " grid1 - " + grid[x, y].color + " grid 2 - " + grid2[x, y].color);
-                }
+               // else
+               // {
+               //     Debug.Log("NOT found: " + x + ", " + y + " grid1 - " + grid[x, y].color + " grid 2 - " + grid2[x, y].color);
+               // }
             }
         }
         
@@ -126,6 +129,9 @@ public class GridManager : MonoBehaviour
         if (CorrectCubes == 16)
         {
             print("YOU ARE SMART. WIN");
+            win = true;
+            Instantiate<GameObject>(winboard);
+            winboard.transform.position = new Vector3(width / 2, height / 2, 0);
         }
     }
 

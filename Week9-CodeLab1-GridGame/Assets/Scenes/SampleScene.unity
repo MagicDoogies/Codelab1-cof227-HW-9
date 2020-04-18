@@ -575,6 +575,9 @@ MonoBehaviour:
   imagecube: {fileID: 5668347532804257379, guid: 9b48a2ca16a25394fa18a9480017f99c,
     type: 3}
   selected: {fileID: 0}
+  win: 0
+  winboard: {fileID: 2646643729808822907, guid: e01ee5a207e35c34b8680aac231742dc,
+    type: 3}
 --- !u!4 &1955671911
 Transform:
   m_ObjectHideFlags: 0

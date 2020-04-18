@@ -8,7 +8,6 @@ public class GridManager : MonoBehaviour
     public int width; //initializing width
     public int height; //initializing height
 
-    
     public float timer = 30;  //start timer at 30 seconds
     public Text infoTime;
 
@@ -128,16 +127,16 @@ public class GridManager : MonoBehaviour
         {
             print("YOU ARE SMART. WIN");
         }
-
-
-
-
-
     }
 
     void Update()
     {
         timer -= Time.deltaTime;
         infoTime.text = "Time: " + (int)timer;
+
+        if(timer <= 0 )
+        { 
+            timer = 0;
+        }
     }
 }

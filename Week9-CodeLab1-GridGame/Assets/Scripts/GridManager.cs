@@ -133,7 +133,7 @@ public class GridManager : MonoBehaviour
 
     void Update()
     {
-      /*  if(CorrectCubes == 16)
+        if(CorrectCubes == 16)
         {
             timer = timer;
         }
@@ -147,7 +147,7 @@ public class GridManager : MonoBehaviour
                 timer = 0;
             }
         }
-        */
+        
         if(CorrectCubes == 16)
         {
             timer -= Time.deltaTime;

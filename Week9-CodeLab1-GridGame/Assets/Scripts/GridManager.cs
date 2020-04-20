@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GridManager : MonoBehaviour
 {
     public int width; //initializing width
     public int height; //initializing height
 
-    public float timer = 30;  //start timer at 30 seconds
+    public float timer = 5;  //Changed timer to be a countdown for game restart.
     public Text infoTime;
 
     public Text youwin;
@@ -132,7 +133,7 @@ public class GridManager : MonoBehaviour
 
     void Update()
     {
-        if(CorrectCubes == 16)
+      /*  if(CorrectCubes == 16)
         {
             timer = timer;
         }
@@ -146,9 +147,18 @@ public class GridManager : MonoBehaviour
                 timer = 0;
             }
         }
+        */
+        if(CorrectCubes == 16)
+        {
+            timer -= Time.deltaTime;
+            Debug.Log("I'm counting down now" + timer);
+        }
         
-        
-
+        if (timer <= 0)//if the timer hits zero.
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("SampleScene");//Reload the scene. (Basically the game auto restarts.
+        }
         
         
         

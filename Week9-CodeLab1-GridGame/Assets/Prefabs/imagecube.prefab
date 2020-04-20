@@ -107,9 +107,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials:
-  - {fileID: 2100000, guid: 90e1ff4d5f3094aea99d19c8b001d79a, type: 2}
-  - {fileID: 2100000, guid: 21fe5d408e39246e689be8050d6aa568, type: 2}
-  - {fileID: 2100000, guid: af3f668dc95f3410f9fdf395bfd98c24, type: 2}
-  - {fileID: 2100000, guid: 2a312b90262b947af80b276fcc2d1d2c, type: 2}
+  - {fileID: 2100000, guid: 9ec9047a7f435654695d7500acbf2c68, type: 2}
+  - {fileID: 2100000, guid: 183974bddfdd0cb4ba7e9d1afa8116fe, type: 2}
+  - {fileID: 2100000, guid: 517c0f0aa4aaaee41890fbc32cdae043, type: 2}
+  - {fileID: 2100000, guid: a493ebf6024ae914a8fa86c36775d2be, type: 2}
   gridX: 0
   gridY: 0
+  color: 0
